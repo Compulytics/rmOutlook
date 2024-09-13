@@ -1,5 +1,5 @@
 $SystemDrive = (Get-WmiObject Win32_OperatingSystem).SystemDrive
-get-childitem -path C:\Users | Select Name | Foreach-Object {
+get-childitem -path $SystemDrive\Users | Select Name | Foreach-Object {
 	if(($_.Name -ne "Public") -and !($_.Directory)){
 		$UserName = $_.Name
 		Remove-Item $SystemDrive\Users\$UserName\AppData\Local\Microsoft\Outlook\*.* -force -ErrorAction SilentlyContinue
